@@ -1,0 +1,138 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Sail start",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOrder": "sequence",
+            "dependsOn": ["Sail up", "Sail dev"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Sail install",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOrder": "sequence",
+            "dependsOn": ["Sail composer install", "Sail npm install"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Sail check",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOrder": "sequence",
+            "dependsOn": ["Sail phpstan", "Sail pint", "Sail test"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Sail up",
+            "type": "shell",
+            "command": "./vendor/bin/sail up -d",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Sail down",
+            "type": "shell",
+            "command": "./vendor/bin/sail down",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Sail dev",
+            "type": "shell",
+            "command": "./vendor/bin/sail npm run dev",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Sail build",
+            "type": "shell",
+            "command": "./vendor/bin/sail npm run build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Sail composer install",
+            "type": "shell",
+            "command": "./vendor/bin/sail composer install",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Sail npm install",
+            "type": "shell",
+            "command": "./vendor/bin/sail npm install",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Sail migrate",
+            "type": "shell",
+            "command": "./vendor/bin/sail php artisan migrate",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Sail redb",
+            "type": "shell",
+            "command": "./vendor/bin/sail php artisan migrate:fresh --seed",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Sail phpstan",
+            "type": "shell",
+            "command": "./vendor/bin/sail php ./vendor/bin/phpstan analyze .",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Sail pint",
+            "type": "shell",
+            "command": "./vendor/bin/sail php ./vendor/bin/pint",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Sail test",
+            "type": "shell",
+            "command": "./vendor/bin/sail php artisan test",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
